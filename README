@@ -5,14 +5,9 @@ NAZWA PROGRAMU Zadanie
 ZADANIE NA WSTEP DO SYSTEMOW OPERACYJNYCH
 
 INSTALACJA PROGRAMU
-1)Uzyc polecenia aclocal
-2)Uzyc polecenia autoconf
-3)Uzyc polecenia libtoolize
-3)Uzyc polecenia automake --add-missing
-4)Uzyc polecenia automake
-5)Uzyc polecenia ./configure
-6)Uzyc polecenia make
-7)Uzyc polecenia ./Zadanie [parametry}
+1)Uzyc polecenia ./configure
+2)Uzyc polecenia make
+3)Uzyc polecenia ./Zadanie [parametry}
 
 OPIS PROGRAMU
 
