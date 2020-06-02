@@ -1,0 +1,20 @@
+WERSJA PROGRAMU PODSTAWOWA 1.0
+
+NAZWA PROGRAMU Zadanie
+
+ZADANIE NA WSTEP DO SYSTEMOW OPERACYJNYCH
+
+OPIS PROGRAMU
+
+Program po wprowadzeniu wielkosci bokow prostokata i prostopadloscianu wypisze komunikaty z wyliczonymi polem prostokat oraz polem i objetoscia prostopadloscianu
+W przypadku podania nieprawidlowej ilosci parametrow program wyswietla odpowiedni komunikat
+
+UŻYTKOWANIE PROGRAMU
+
+Aby program działał w zalecony sposób należy w trakcie jego uruchomienia podać 5 parametrów wedlug wzoru: bok_prostokata drugi_bok_prostokata bok_podstawy_prostopadloscianu drugi_bok_prostopadłoscianu wysokość_prostopadłościanu
+
+Program jest odporny na wprowadzenie nieprawidlowych danych 
+
+Rozna liczba parametrow spowoduje wyswietlenie odpowiednich komunikatow 
+
+Jezeli jako parametr zostanie podany znak lub ciag znakow wartosc tego parametru zostanie wyzerowana

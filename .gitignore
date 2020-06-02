@@ -1,0 +1,13 @@
+.deps/
+Zadanie
+config.log
+config.status
+*.o
+*.la
+*.lo
+Makefile
+missing
+install-sh
+aclocal.m4 
+compile
+autom4te.cache
