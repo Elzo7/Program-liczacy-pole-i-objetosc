@@ -7,7 +7,9 @@ ZADANIE NA WSTEP DO SYSTEMOW OPERACYJNYCH
 INSTALACJA PROGRAMU
 1)Uzyc polecenia ./configure
 2)Uzyc polecenia make
-3)Uzyc polecenia ./Zadanie [Parametry]
+3)Uzyc polecenie sudo make install
+4)Uzyc polecenia Zadanie [parametry]
+
 
 OPIS PROGRAMU
 

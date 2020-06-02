@@ -1,8 +1,10 @@
-AC_INIT([Program liczacy pole i objetosc],[1.1],[damiantra7@gmail.com])
+AC_INIT([Program liczacy pole i objetosc],[1.2],[damiantra7@gmail.com])
 
 AM_INIT_AUTOMAKE
 
-LT_INIT()
+LT_INIT
+
+AC_CONFIG_SRCDIR([main.c])
 
 AC_PROG_CC
 

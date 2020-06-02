@@ -1,7 +1,10 @@
 bin_PROGRAMS = Zadanie
 Zadanie_SOURCES = main.c
-Zadanie_LDADD=libp.la libo.la
-Zadanie_LDFLAGS = -static
-lib_LTLIBRARIES = libp.la libo.la
+Zadanie_DEPENDENCIES = libp.la libo.la
+lib_LTLIBRARIES = libo.la
+noinst_LTLIBRARIES = libp.la
 libp_la_SOURCES = pola.c pola.h
 libo_la_SOURCES = objetosc.c objetosc.h
+Zadanie_LDADD = libp.la libo.la
+Zadanie_LDFLAGS = -rpath /usr/local/lib
+libo_la_LDFLAGS = -version-info 1:0
