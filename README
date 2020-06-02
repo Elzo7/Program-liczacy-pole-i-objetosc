@@ -4,6 +4,11 @@ NAZWA PROGRAMU Zadanie
 
 ZADANIE NA WSTEP DO SYSTEMOW OPERACYJNYCH
 
+INSTALACJA PROGRAMU
+1)Uruchomienie polecen ./config
+2)Uruchomienie polecenia make
+3)Uruchomienie polecenia ./Zadanie [Parametry]
+
 OPIS PROGRAMU
 
 Program po wprowadzeniu wielkosci bokow prostokata i prostopadloscianu wypisze komunikaty z wyliczonymi polem prostokat oraz polem i objetoscia prostopadloscianu
