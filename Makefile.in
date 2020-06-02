@@ -130,7 +130,7 @@ am__uninstall_files_from_dir = { \
          $(am__cd) "$$dir" && rm -f $$files; }; \
   }
 am__installdirs = "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)"
-LTLIBRARIES = $(lib_LTLIBRARIES)
+LTLIBRARIES = $(lib_LTLIBRARIES) $(noinst_LTLIBRARIES)
 libo_la_LIBADD =
 am_libo_la_OBJECTS = objetosc.lo
 libo_la_OBJECTS = $(am_libo_la_OBJECTS)
@@ -138,13 +138,15 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+libo_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
+	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
+	$(libo_la_LDFLAGS) $(LDFLAGS) -o $@
 libp_la_LIBADD =
 am_libp_la_OBJECTS = pola.lo
 libp_la_OBJECTS = $(am_libp_la_OBJECTS)
 PROGRAMS = $(bin_PROGRAMS)
 am_Zadanie_OBJECTS = main.$(OBJEXT)
 Zadanie_OBJECTS = $(am_Zadanie_OBJECTS)
-Zadanie_DEPENDENCIES = libp.la libo.la
 Zadanie_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(Zadanie_LDFLAGS) $(LDFLAGS) -o $@
@@ -348,11 +350,14 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 Zadanie_SOURCES = main.c
-Zadanie_LDADD = libp.la libo.la
-Zadanie_LDFLAGS = -static
-lib_LTLIBRARIES = libp.la libo.la
+Zadanie_DEPENDENCIES = libp.la libo.la
+lib_LTLIBRARIES = libo.la
+noinst_LTLIBRARIES = libp.la
 libp_la_SOURCES = pola.c pola.h
-libo_la_SOURCES = objetosc.c objetosc.a
+libo_la_SOURCES = objetosc.c objetosc.h
+Zadanie_LDADD = libp.la libo.la
+Zadanie_LDFLAGS = -rpath /usr/local/lib
+libo_la_LDFLAGS = -version-info 1:0
 all: all-am
 
 .SUFFIXES:
@@ -426,11 +431,22 @@ clean-libLTLIBRARIES:
 	  rm -f $${locs}; \
 	}
 
+clean-noinstLTLIBRARIES:
+	-test -z "$(noinst_LTLIBRARIES)" || rm -f $(noinst_LTLIBRARIES)
+	@list='$(noinst_LTLIBRARIES)'; \
+	locs=`for p in $$list; do echo $$p; done | \
+	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
+	      sort -u`; \
+	test -z "$$locs" || { \
+	  echo rm -f $${locs}; \
+	  rm -f $${locs}; \
+	}
+
 libo.la: $(libo_la_OBJECTS) $(libo_la_DEPENDENCIES) $(EXTRA_libo_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) -rpath $(libdir) $(libo_la_OBJECTS) $(libo_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(libo_la_LINK) -rpath $(libdir) $(libo_la_OBJECTS) $(libo_la_LIBADD) $(LIBS)
 
 libp.la: $(libp_la_OBJECTS) $(libp_la_DEPENDENCIES) $(EXTRA_libp_la_DEPENDENCIES) 
-	$(AM_V_CCLD)$(LINK) -rpath $(libdir) $(libp_la_OBJECTS) $(libp_la_LIBADD) $(LIBS)
+	$(AM_V_CCLD)$(LINK)  $(libp_la_OBJECTS) $(libp_la_LIBADD) $(LIBS)
 install-binPROGRAMS: $(bin_PROGRAMS)
 	@$(NORMAL_INSTALL)
 	@list='$(bin_PROGRAMS)'; test -n "$(bindir)" || list=; \
@@ -789,7 +805,7 @@ maintainer-clean-generic:
 clean: clean-am
 
 clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
-	clean-libtool mostlyclean-am
+	clean-libtool clean-noinstLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
@@ -864,18 +880,18 @@ uninstall-am: uninstall-binPROGRAMS uninstall-libLTLIBRARIES
 
 .PHONY: CTAGS GTAGS TAGS all all-am am--refresh check check-am clean \
 	clean-binPROGRAMS clean-cscope clean-generic \
-	clean-libLTLIBRARIES clean-libtool cscope cscopelist-am ctags \
-	ctags-am dist dist-all dist-bzip2 dist-gzip dist-lzip \
-	dist-shar dist-tarZ dist-xz dist-zip distcheck distclean \
-	distclean-compile distclean-generic distclean-libtool \
-	distclean-tags distcleancheck distdir distuninstallcheck dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-binPROGRAMS install-data install-data-am install-dvi \
-	install-dvi-am install-exec install-exec-am install-html \
-	install-html-am install-info install-info-am \
-	install-libLTLIBRARIES install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
+	clean-libLTLIBRARIES clean-libtool clean-noinstLTLIBRARIES \
+	cscope cscopelist-am ctags ctags-am dist dist-all dist-bzip2 \
+	dist-gzip dist-lzip dist-shar dist-tarZ dist-xz dist-zip \
+	distcheck distclean distclean-compile distclean-generic \
+	distclean-libtool distclean-tags distcleancheck distdir \
+	distuninstallcheck dvi dvi-am html html-am info info-am \
+	install install-am install-binPROGRAMS install-data \
+	install-data-am install-dvi install-dvi-am install-exec \
+	install-exec-am install-html install-html-am install-info \
+	install-info-am install-libLTLIBRARIES install-man install-pdf \
+	install-pdf-am install-ps install-ps-am install-strip \
+	installcheck installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS \
