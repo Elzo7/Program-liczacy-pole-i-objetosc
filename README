@@ -1,4 +1,4 @@
-WERSJA PROGRAMU PODSTAWOWA 1.0
+WERSJA PROGRAMU PODSTAWOWA 1.1
 
 NAZWA PROGRAMU Zadanie
 
@@ -9,6 +9,7 @@ INSTALACJA PROGRAMU
 2)Uzyc polecenia make
 3)Uzyc polecenie sudo make install
 4)Uzyc polecenia Zadanie [parametry]
+
 
 OPIS PROGRAMU
 
