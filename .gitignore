@@ -11,3 +11,4 @@ install-sh
 aclocal.m4 
 compile
 autom4te.cache
+.libs/

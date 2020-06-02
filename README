@@ -1,13 +1,13 @@
-WERSJA PROGRAMU PODSTAWOWA 1.0
+WERSJA PROGRAMU PODSTAWOWA 1.1
 
 NAZWA PROGRAMU Zadanie
 
 ZADANIE NA WSTEP DO SYSTEMOW OPERACYJNYCH
 
 INSTALACJA PROGRAMU
-1)Uruchomienie polecen ./config
-2)Uruchomienie polecenia make
-3)Uruchomienie polecenia ./Zadanie [Parametry]
+1)Uzyc polecenia ./configure
+2)Uzyc polecenia make
+3)Uzyc polecenia ./Zadanie [Parametry]
 
 OPIS PROGRAMU
 
